@@ -6,18 +6,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="UserInputBox">
-    <center>
-        <div class="FloorCount">
-          Enter the number of floors needed  <input type="number" id="TotalCount" name="totalcount">
-        </div>
-        <br><br>
-        <div class="LiftCount">
-          enter the number of lifts needed  <input type="number" id="Lift" name="lift">
-        </div>
-        <br>
-        <button type="button" id="Submit">"Submit"</button>
-    </center>
+<div id="UserInputBox">
+
+    <form class="form">
+        <center>
+            <div class="FloorCount">
+          Enter the number of floors needed  <input type="number" id="TotalCount"  min="0">
+            </div>
+            <br><br>
+            <div class="LiftCount">
+          enter the number of lifts needed  <input type="number" id="Lift"  min ="0">
+            </div>
+            <br>
+            <button type="button" id="Submit">"Submit"</button>
+        </center>
+    </form>
+</div>
+<div id="content-container" class="hidden">
+    <!-- Content will be loaded here dynamically -->
 </div>
 
 <script src="LiftSimulation.js"></script>

@@ -60,3 +60,45 @@
 
 
 }*/
+
+.hidden {
+    display: none;
+}
+
+/*.floor-box {
+    border: 1px solid #000;
+    padding: 10px;
+    margin: 5px;
+    background-color: #ccc;
+    text-align: center;
+}*/
+.LIFT {
+            /*display: flex;
+            flex-direction: column;
+            align-items: ;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #000;
+            background-color: black;
+*/
+width: 60px;
+    height: 120px;
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    line-height: 100px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-origin: center bottom;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: -160px;
+    left: 90px;
+
+        }
+        .lines{
+           margin-top: 80px;
+           margin-bottom: 40px;
+
+        }
+
