@@ -15,6 +15,7 @@ document.getElementById('Submit').addEventListener('click', function () {
         let dynamicContent = '<center><h1>Lift Simulation</h1></center>';
         var floor_counts = document.getElementById('TotalCount').value;
         var Lift_counts = document.getElementById('Lift').value
+
           for(let i = floor_counts;i>=0;i--){
             dynamicContent += `<button class="floors-button">Floor ${i}</button>  <div class="lines"><hr width="900"></div>`;
           }
@@ -35,11 +36,14 @@ document.getElementById('Submit').addEventListener('click', function () {
 
 
              var Lift_count = document.getElementById('Lift').value;
+             const lift_container = document.createElement('div');
+             lift_container.classList.add('LIFT-container');
+             contentContainer.appendChild(lift_container);
              for(let j = 1;j<=Lift_counts;j++){
                              const lift = document.createElement('div');
                              lift.classList.add('LIFT');
                              lift.innerHTML = `<p>${j}</p>`;
-                             contentContainer.appendChild(lift);
+                             lift_container .appendChild(lift);
                          }
 
 
@@ -55,25 +59,31 @@ contentContainers.addEventListener('click', function (event) {
         // Get the text content of the clicked button (e.g., "Floor 1")
         const clickedButtonValue = event.target.textContent;
         console.log(`Button for ${clickedButtonValue} was clicked.`);
-        if(clickedButtonValue == 'Floor 3'){
+
                 const liftElement = document.querySelector('.LIFT');
                 const floorButtons = document.querySelectorAll('.floors-button');
-
+//
                 floorButtons.forEach((button, index) => {
                     button.addEventListener('click', () => {
-                        // Get the top position of the clicked button
-                        const buttonTop = button.getBoundingClientRect().top;
-                        // Get the left position of the clicked button
-                        const buttonLeft = button.getBoundingClientRect().left;
+//                              // Get the initial position of the lift element relative to the parent container
+                                  const initialTop = liftElement.offsetTop;
+                                  const initialLeft = liftElement.offsetLeft;
 
-                        // Animate the lift element to the clicked position
-                        liftElement.style.transition = 'left 0.5s, top 0.5s';
-                        liftElement.style.left = `${buttonLeft}px`;
-                        liftElement.style.top = `${buttonTop}px`;
+                                  // Get the top position of the clicked button relative to the parent container
+                                  const buttonTop = button.offsetTop;
+                                  const buttonLeft = button.offsetLeft;
+
+                                  // Calculate the difference between initial and target positions
+                                  const deltaY = buttonTop - initialTop;
+                                  const deltaX = buttonLeft - initialLeft;
+
+                                  // Animate the lift element to the clicked position
+                                  liftElement.style.transition = 'transform 0.5s ease';
+                                  liftElement.style.transform = `translate(${deltaX + 30}px, ${deltaY + 30}px)`;
                     });
                 });
 
-        }
+
     }
 });
 

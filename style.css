@@ -72,34 +72,27 @@
     background-color: #ccc;
     text-align: center;
 }*/
+.LIFT-container {
+    display: flex;
+}
+
 .LIFT {
-            /*display: flex;
-            flex-direction: column;
-            align-items: ;
-            margin: 10px;
-            padding: 10px;
-            border: 1px solid #000;
-            background-color: black;
-*/
-
-
-    position: absolute;
-    transition: left 0.5s, top 0.5s;
-width: 60px;
+    width: 60px;
     height: 120px;
     background-color: #3498db;
     color: #fff;
     text-align: center;
     line-height: 100px;
     cursor: pointer;
-
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     transform-origin: center bottom;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    float: left;
+    margin-right: 10px;
 
-    top: -160px;
-    left: 90px;
 
-        }
+}
+
         .lines{
            margin-top: 80px;
            margin-bottom: 40px;
