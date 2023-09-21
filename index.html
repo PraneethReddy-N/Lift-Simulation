@@ -1,31 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Lift Simulation</title>
     <link rel="stylesheet" href="style.css">
+    <title>Lift Simulation</title>
 </head>
 <body>
-<div id="UserInputBox">
-
-    <form class="form">
-        <center>
-            <div class="FloorCount">
-          Enter the number of floors needed  <input type="number" id="TotalCount"  min="0">
-            </div>
-            <br><br>
-            <div class="LiftCount">
-          enter the number of lifts needed  <input type="number" id="Lift"  min ="0">
-            </div>
-            <br>
-            <button type="button" id="Submit">"Submit"</button>
-        </center>
-    </form>
-</div>
-<div id="content-container" class="hidden">
-    <!-- Content will be loaded here dynamically -->
-</div>
-
+<h1 id="heading">Lift Simulation</h1>
+<form action="" id="formDiv">
+    <label for="floorVal">Enter number of floors</label>
+    <input type="number" id="floorVal" required>
+    <label for="liftVal">Enter number of lifts</label>
+    <input type="number" id="liftVal" required>
+    <button id="startBtn">Start</button>
+</form>
 <script src="LiftSimulation.js"></script>
 
 </body>
