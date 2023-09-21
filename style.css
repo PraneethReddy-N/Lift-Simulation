@@ -61,9 +61,7 @@
 
 }*/
 
-.hidden {
-    display: none;
-}
+
 
 /*.floor-box {
     border: 1px solid #000;
@@ -103,4 +101,181 @@ html {
 
 label {
     font-size: 1.8rem;
+}
+#formDiv input {
+    width: 25rem;
+    padding: 0.5rem;
+    margin: 1rem;
+}
+
+#formDiv button {
+    color: white;
+    width: 25rem;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+    padding: 0.8rem;
+    border-radius: 2rem;
+    background: #00b9ff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.floor {
+    border: 2px solid #3a6235;
+    background: #CED4CA;
+    height: 14rem;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+    width: 150rem;
+}
+
+.floorInfo {
+    /* border: 2px solid rgb(91, 143, 255); */
+    background: #3a6235;
+    height: 14rem;
+    width: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.floor p {
+    /* margin: 0.5rem; */
+    font-size: 2rem;
+    color: white;
+}
+
+.lifts {
+    height: 100%;
+    width: 7rem;
+    border: 2px solid black;
+    overflow: hidden;
+    z-index: 5;
+}
+
+.liftDoor {
+    border: 2px solid rgb(83, 83, 83);
+    height: 100%;
+    width: 50%;
+    background-color: grey;
+    display: inline-block;
+}
+
+.up_btn,
+.down_btn {
+    width: 4rem;
+    height: 4rem; /* Adjust the height to a reasonable value */
+    border: none;
+    font-size: 1.2rem;
+    border-radius: 2rem;
+    margin: 0.8rem;
+    background: #ffffff;
+    cursor: pointer;
+    border: 2px solid white;
+      align-self: center;
+}
+
+
+.up_btn:hover,
+.down_btn:hover {
+    color: white;
+    background: #3a6235;
+    border: 2px solid white;
+}
+
+@media screen and (max-width: 480px) {
+    label {
+        font-size: 1.5rem;
+    }
+
+    .floorInfo {
+        height: 7rem;
+        width: 7rem;
+    }
+
+    .up_btn,
+    .down_btn {
+        width: 2rem;
+        height: 2rem;
+        font-size: 1rem;
+        margin: 2px;
+    }
+
+    .floor {
+        height: 7rem;
+
+    }
+
+    .floor p {
+        font-size: 1.3rem;
+    }
+
+    .lifts {
+        width: 4rem;
+        flex-shrink: 0;
+        display: inline-block;
+        margin-right: 10px;
+        /* z-index: 5; */
+    }
+
+    .floor #groundFloor:nth-child(2) {
+        margin-left: 10px;
+    }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+    .floor {
+        height: 9rem;
+    }
+
+    .floor p {
+        font-size: 1.5rem;
+    }
+
+    .floorInfo {
+        height: 9rem;
+        width: 9rem;
+
+.up_btn,
+    .down_btn {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.3rem;
+        margin: 3px;
+    }
+
+    .lifts {
+        width: 5rem;
+    }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    html {
+        font-size: 55%;
+    }
+}
+#liftDiv {
+    height: 100vh; /* Set the height to 100% of the viewport height */
+    overflow: hidden; /* Add overflow: hidden; to prevent scrollbars if needed */
+}
+.down_btn {
+    width: 4rem;
+    height: 14rem; /* Match the height of .floor */
+    /* ... other styles ... */
+}
+
+.floor {
+    border: 2px solid #3a6235;
+    background: #CED4CA;
+    display: flex;
+    flex-direction: column; /* Align buttons vertically */
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    width: 150rem;
 }
