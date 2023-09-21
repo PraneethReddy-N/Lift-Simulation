@@ -100,4 +100,31 @@
         }
 
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+html {
+    font-size: 62.5%;
+}
+
+#heading {
+    text-align: center;
+    font-size: 3rem;
+    margin: 2rem;
+    color: #c65151;
+}
+
+#formDiv {
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+label {
+    font-size: 1.8rem;
+}
