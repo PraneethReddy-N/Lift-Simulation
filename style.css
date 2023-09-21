@@ -111,12 +111,12 @@ label {
 #formDiv button {
     color: white;
     width: 25rem;
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin-top: 2rem;
     margin-bottom: 5rem;
     padding: 0.8rem;
     border-radius: 2rem;
-    background: #00b9ff;
+    background: black;
     border: none;
     outline: none;
     cursor: pointer;
@@ -174,18 +174,17 @@ label {
     border-radius: 2rem;
     margin: 0.8rem;
     background: #ffffff;
-    cursor: pointer;
-    border: 2px solid white;
-      align-self: center;
+
+
 }
 
 
-.up_btn:hover,
+/*.up_btn:hover,
 .down_btn:hover {
     color: white;
-    background: #3a6235;
-    border: 2px solid white;
-}
+  *//*  background: #3a6235;
+    border: 2px solid white;*//*
+}*/
 
 @media screen and (max-width: 480px) {
     label {
@@ -197,13 +196,13 @@ label {
         width: 7rem;
     }
 
-    .up_btn,
+   /* .up_btn,
     .down_btn {
         width: 2rem;
         height: 2rem;
         font-size: 1rem;
         margin: 2px;
-    }
+    }*/
 
     .floor {
         height: 7rem;
@@ -262,20 +261,4 @@ label {
 #liftDiv {
     height: 100vh; /* Set the height to 100% of the viewport height */
     overflow: hidden; /* Add overflow: hidden; to prevent scrollbars if needed */
-}
-.down_btn {
-    width: 4rem;
-    height: 14rem; /* Match the height of .floor */
-    /* ... other styles ... */
-}
-
-.floor {
-    border: 2px solid #3a6235;
-    background: #CED4CA;
-    display: flex;
-    flex-direction: column; /* Align buttons vertically */
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-    width: 150rem;
 }
