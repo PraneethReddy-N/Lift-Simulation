@@ -156,3 +156,185 @@ const moveLift = (floor, liftNum, liftPos, isLiftBusy) => {
 
     liftPos[liftNum] = +floor;
 }
+function nearestFreeLift(calledFloor, liftPos, isLiftBusy) {
+    let diff = [];
+    for (let pos of liftPos)
+        diff.push(Math.abs(pos - (+(calledFloor))))   // array containing distance from calledFloor
+    // console.log(`diff ${diff}`);
+
+    let mini = 100, ind = -1;
+    for (let d = 0; d < diff.length; d++) {
+        if (diff[d] < mini && isLiftBusy[d] === false) {
+            mini = diff[d];
+            ind = d;
+        }
+        else continue;
+    }
+    return ind;
+}
+
+function callLift(i, totalFloors, liftPos, isLiftBusy) {
+    const up_btn = document.querySelectorAll('.up_btn');
+    const down_btn = document.querySelectorAll('.down_btn');
+
+    up_btn.forEach((btn, id) => {
+        if (i == id) {
+            btn.addEventListener('click', () => {
+                const calledFloor = `${totalFloors - id}`;
+
+                if (liftPos[0] === 0) {
+                    if (isLiftBusy[0] === false)
+                        moveLift(calledFloor, 0, liftPos, isLiftBusy);
+                }
+                else {
+                    let ind = nearestFreeLift(calledFloor, liftPos, isLiftBusy);
+
+                    if (isLiftBusy[ind] === false)
+                        moveLift(calledFloor, ind, liftPos, isLiftBusy);
+                    else {
+                        // alert(`Lifts are busy. Please wait! it will come to you`);
+                        if (!queue.includes(calledFloor))
+                            queue.push(calledFloor)
+
+                        let timeout = setInterval(() => {
+                            let ankit = isLiftBusy.some((lift) => {
+                                return lift === false
+                            })
+                            if (ankit && queue.length > 0) {
+                                let ind = nearestFreeLift(queue[0], liftPos, isLiftBusy);
+
+                                moveLift(queue[0], ind, liftPos, isLiftBusy);
+                                queue.shift();
+                                // console.log(queue);
+                            }
+                        }, 500)
+                        if (queue.length === 0)
+                            clearInterval(timeout)
+                    }
+                    console.log(`queue = ${queue}`);
+                }
+            })
+        }
+    })
+
+    down_btn.forEach((btn, id) => {
+        if (i == id) {
+            btn.addEventListener('click', () => {
+                const calledFloor = `${totalFloors - id}`;
+
+                if (liftPos[0] === 0) {
+                    if (isLiftBusy[0] === false)
+                        moveLift(calledFloor, 0, liftPos, isLiftBusy);
+                }
+                else {
+                    let ind = nearestFreeLift(calledFloor, liftPos, isLiftBusy);
+
+                    if (isLiftBusy[ind] === false)
+                        moveLift(calledFloor, ind, liftPos, isLiftBusy);
+                    else {
+                        // alert(`Lifts are busy. Please wait! it will come to you`);
+                        if (!queue.includes(calledFloor))
+                            queue.push(calledFloor)
+
+                        let timeout = setInterval(() => {
+                            let ankit = isLiftBusy.some((lift) => {
+                                return lift === false
+                            })
+                            if (ankit && queue.length > 0) {
+                                let ind = nearestFreeLift(queue[0], liftPos, isLiftBusy);
+
+                                moveLift(queue[0], ind, liftPos, isLiftBusy);
+                                queue.shift();
+                            }
+                        }, 500)
+                        if (queue.length === 0)
+                            clearInterval(timeout)
+                    }
+                }
+                console.log(`queue = ${queue}`);
+            })
+        }
+    })
+}
+const createFloor = (totalFloors, totalLifts) => {
+    console.log(window.clientHeight);
+    let liftDiv = document.getElementById('liftDiv')
+    liftDiv.innerHTML = '';
+    queue = [];
+
+    let liftPos = Array(+totalLifts).fill(0);
+    let isLiftBusy = Array(+totalLifts).fill(false);
+
+    let floorInfo, floorNum, upBtn, downBtn;
+
+    for (var i = 0; i <= totalFloors; i++) {
+        let floor = document.createElement('div')
+
+        floorInfo = document.createElement('div')
+        floorNum = document.createElement('p')
+        upBtn = document.createElement('button')
+        downBtn = document.createElement('button')
+
+        floor.setAttribute('class', 'floor')
+        floorInfo.setAttribute('class', 'floorInfo')
+        upBtn.setAttribute('class', 'up_btn')
+        downBtn.setAttribute('class', 'down_btn')
+
+        floorNum.innerHTML = `Floor ${totalFloors - i}`
+        upBtn.innerHTML = `▲`
+        downBtn.innerHTML = `▼`
+
+        liftDiv.appendChild(floor)
+        floor.appendChild(floorInfo)
+        floorInfo.append(upBtn, floorNum, downBtn);
+
+        if (i == totalFloors) {
+            floor.setAttribute('id', 'groundFloor');
+            addLifts(totalLifts);            // ADDING LIFTS TO THE GROUND FLOOR
+        }
+
+        // CALLING LIFT
+
+        callLift(i, totalFloors, liftPos, isLiftBusy);
+    }
+}
+
+const startBtn = document.getElementById(`startBtn`);
+startBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    let floorVal = document.getElementById(`floorVal`).value;
+    let liftVal = document.getElementById(`liftVal`).value;
+
+    console.log(floorVal, liftVal);
+
+    if (floorVal === '' || liftVal === '') {
+        alert('Please enter the details!')
+        return;
+    } else if (floorVal < 1 || liftVal < 1) {
+        alert('Please enter valid details!');
+        return;
+    }
+    else if (Number(liftVal) > 10) {
+        alert('Number of lifts can not be greater than 10!');
+        return;
+    }
+    else if (Number(liftVal) > Number(floorVal)) {
+        alert('Number of lifts can not be greater than number of floors!');
+        return;
+    }
+    else if (window.innerWidth < 300 && Number(liftVal) > 4) {
+        alert('Number of lifts can not be greater than 4!');
+        return;
+    }
+    else if (window.innerWidth < 400 && Number(liftVal) > 5) {
+        alert('Number of lifts can not be greater than 5!');
+        return;
+    }
+    else if (window.innerWidth < 500 && Number(liftVal) > 6) {
+        alert('Number of lifts can not be greater than 6!');
+        return;
+    }
+
+    createFloor(floorVal, liftVal)
+})
