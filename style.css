@@ -140,7 +140,7 @@ label {
     background: #CED4CA;
     height: 14rem;
     display: flex;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     z-index: 1;
     width: 150rem;
 }
@@ -169,6 +169,7 @@ label {
     border: 2px ;
     overflow: hidden;
     z-index: 5;
+    margin-right: 1rem;
 }
 
 /* Lift door styles */
@@ -183,35 +184,28 @@ label {
 /* Button styles for up and down */
 .up_btn,
 .down_btn {
-    width: 4rem;
-    height: 4rem;
-    border: none;
-    font-size: 1.2rem;
-    border-radius: 50%;
-    margin: 0.8rem;
-    background: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
-    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3); /* Add a subtle box shadow */
+  width: 4rem;
+     height: 4rem;
+     border: none;
+     font-size: 1.2rem;
+     /* Remove border-radius and background properties */
+     margin: 0.8rem;
+     background: none;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     cursor: pointer;
+     transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+     box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
 }
 
 /* Style for the up button */
-.up_btn {
-    color: #4CAF50; /* Green color for up button */
-}
 
-/* Style for the down button */
-.down_btn {
-    color: #FF5733; /* New color (e.g., red) for down button */
-}
 
 /* Hover effect for both buttons */
 .up_btn:hover,
 .down_btn:hover {
-    background-color: #F2F2F2; /* New background color (e.g., light gray) on hover */
+    /*background-color: #F2F2F2;*/ /* New background color (e.g., light gray) on hover */
     transform: scale(1.05); /* Slightly scale up on hover */
 }
 

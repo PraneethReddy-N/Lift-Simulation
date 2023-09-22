@@ -74,10 +74,13 @@ function callLift(i, totalFloors, liftPos, isLiftBusy) {
     const up_btn = document.querySelectorAll('.up_btn');
     const down_btn = document.querySelectorAll('.down_btn');
 
+    // Hide the "down" button by default
+    down_btn[i].style.display = 'none';
+
     up_btn.forEach((btn, id) => {
         if (i == id) {
             btn.addEventListener('click', (e) => {
-            e.preventDefault();
+                e.preventDefault();
                 const calledFloor = `${totalFloors - id}`;
 
                 if (liftPos[0] === 0) {
@@ -106,6 +109,13 @@ function callLift(i, totalFloors, liftPos, isLiftBusy) {
                             clearInterval(timeout);
                     }
                 }
+
+                // Check if any lifts are called above
+                const liftsCalledAbove = liftPos.some((pos) => pos < totalFloors - id);
+                if (liftsCalledAbove) {
+                    // Show the "down" button
+                    down_btn[i].style.display = 'block';
+                }
             });
         }
     });
@@ -113,7 +123,7 @@ function callLift(i, totalFloors, liftPos, isLiftBusy) {
     down_btn.forEach((btn, id) => {
         if (i == id) {
             btn.addEventListener('click', (e) => {
-            e.preventDefault();
+                e.preventDefault();
                 const calledFloor = `${totalFloors - id}`;
 
                 if (liftPos[0] === 0) {
@@ -146,6 +156,7 @@ function callLift(i, totalFloors, liftPos, isLiftBusy) {
         }
     });
 }
+
 
 const createFloor = (totalFloors, totalLifts) => {
     let liftDiv = document.getElementById('liftDiv');
