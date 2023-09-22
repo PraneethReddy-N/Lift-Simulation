@@ -74,8 +74,8 @@ function callLift(i, totalFloors, liftPos, isLiftBusy) {
     const up_btn = document.querySelectorAll('.up_btn');
     const down_btn = document.querySelectorAll('.down_btn');
 
-    // Hide the "down" button by default
-    down_btn[i].style.display = 'none';
+//    // Hide the "down" button by default
+//    down_btn[i].style.display = 'none';
 
     up_btn.forEach((btn, id) => {
         if (i == id) {
@@ -112,49 +112,41 @@ function callLift(i, totalFloors, liftPos, isLiftBusy) {
 
                 // Check if any lifts are called above
                 const liftsCalledAbove = liftPos.some((pos) => pos < totalFloors - id);
-                if (liftsCalledAbove) {
+               /* if (liftsCalledAbove) {
                     // Show the "down" button
                     down_btn[i].style.display = 'block';
-                }
+                }*/
             });
         }
     });
 
-    down_btn.forEach((btn, id) => {
-        if (i == id) {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const calledFloor = `${totalFloors - id}`;
+down_btn.forEach((btn, id) => {
+    if (i == id) {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const calledFloor = totalFloors - id;
 
-                if (liftPos[0] === 0) {
-                    if (isLiftBusy[0] === false)
-                        moveLift(calledFloor, 0, liftPos, isLiftBusy);
-                } else {
-                    let ind = nearestFreeLift(calledFloor, liftPos, isLiftBusy);
-
-                    if (isLiftBusy[ind] === false)
-                        moveLift(calledFloor, ind, liftPos, isLiftBusy);
-                    else {
-                        if (!queue.includes(calledFloor))
-                            queue.push(calledFloor);
-
-                        let timeout = setInterval(() => {
-                            let lift_queue = isLiftBusy.some((lift) => {
-                                return lift === false;
-                            });
-                            if (lift_queue && queue.length > 0) {
-                                let ind = nearestFreeLift(queue[0], liftPos, isLiftBusy);
-                                moveLift(queue[0], ind, liftPos, isLiftBusy);
-                                queue.shift();
-                            }
-                        }, 500);
-                        if (queue.length === 0)
-                            clearInterval(timeout);
-                    }
+            // Find the nearest lift that's above the called floor
+            let ind = -1;
+            for (let j = 0; j < liftPos.length; j++) {
+                if (liftPos[j] >= calledFloor && isLiftBusy[j] === false) {
+                    ind = j;
+                    break;
                 }
-            });
-        }
-    });
+            }
+
+            if (ind !== -1) {
+                moveLift(calledFloor, ind, liftPos, isLiftBusy);
+            } else {
+                // If no available lift is above, add to the queue
+                if (!queue.includes(calledFloor)) {
+                    queue.push(calledFloor);
+                }
+            }
+        });
+    }
+});
+
 }
 
 
