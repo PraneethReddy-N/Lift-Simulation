@@ -74,6 +74,7 @@
 
 
 
+/* Reset CSS */
 * {
     margin: 0;
     padding: 0;
@@ -84,46 +85,58 @@ html {
     font-size: 62.5%;
 }
 
+/* Heading styles */
 #heading {
     text-align: center;
     font-size: 3rem;
     margin: 2rem;
-    color: #c65151;
+    color: black;
 }
 
+/* Form container styles */
 #formDiv {
-    /* border: 2px solid red; */
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 2rem;
 }
 
+/* Label styles */
 label {
     font-size: 1.8rem;
 }
+
+/* Input styles */
 #formDiv input {
     width: 25rem;
     padding: 0.5rem;
     margin: 1rem;
 }
 
-#formDiv button {
+/* Lift simulation button styles */
+#formDiv button.lift-simulation {
     color: white;
     width: 25rem;
-    font-size: 1rem;
-    margin-top: 2rem;
-    margin-bottom: 5rem;
+    font-size: 1.5rem;
     padding: 0.8rem;
     border-radius: 2rem;
-    background: black;
+    background: #ff5733; /* New button color (e.g., orange) */
     border: none;
     outline: none;
     cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    margin-top: 15px;
 }
 
+/* Hover effect for the lift simulation button */
+#formDiv button.lift-simulation:hover {
+    background-color: #ff8c66; /* New button color on hover */
+    transform: scale(1.05);
+}
+
+/* Floor styles */
 .floor {
-    border: 2px solid #3a6235;
+    border: 2px solid ;
     background: #CED4CA;
     height: 14rem;
     display: flex;
@@ -132,9 +145,9 @@ label {
     width: 150rem;
 }
 
+/* Floor information styles */
 .floorInfo {
-    /* border: 2px solid rgb(91, 143, 255); */
-    background: #3a6235;
+
     height: 14rem;
     width: 15rem;
     display: flex;
@@ -143,49 +156,66 @@ label {
     justify-content: center;
 }
 
+/* Floor text styles */
 .floor p {
-    /* margin: 0.5rem; */
     font-size: 2rem;
     color: white;
 }
 
+/* Lift styles */
 .lifts {
     height: 100%;
     width: 7rem;
-    border: 2px solid black;
+    border: 2px ;
     overflow: hidden;
     z-index: 5;
 }
 
+/* Lift door styles */
 .liftDoor {
     border: 2px solid rgb(83, 83, 83);
     height: 100%;
     width: 50%;
-    background-color: grey;
+    background-color: black;
     display: inline-block;
 }
 
+/* Button styles for up and down */
 .up_btn,
 .down_btn {
     width: 4rem;
-    height: 4rem; /* Adjust the height to a reasonable value */
+    height: 4rem;
     border: none;
     font-size: 1.2rem;
-    border-radius: 2rem;
+    border-radius: 50%;
     margin: 0.8rem;
     background: #ffffff;
-
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3); /* Add a subtle box shadow */
 }
 
+/* Style for the up button */
+.up_btn {
+    color: #4CAF50; /* Green color for up button */
+}
 
-/*.up_btn:hover,
+/* Style for the down button */
+.down_btn {
+    color: #FF5733; /* New color (e.g., red) for down button */
+}
+
+/* Hover effect for both buttons */
+.up_btn:hover,
 .down_btn:hover {
-    color: white;
-  *//*  background: #3a6235;
-    border: 2px solid white;*//*
-}*/
+    background-color: #F2F2F2; /* New background color (e.g., light gray) on hover */
+    transform: scale(1.05); /* Slightly scale up on hover */
+}
 
+/* Responsive styles for smaller screens */
 @media screen and (max-width: 480px) {
     label {
         font-size: 1.5rem;
@@ -196,17 +226,8 @@ label {
         width: 7rem;
     }
 
-   /* .up_btn,
-    .down_btn {
-        width: 2rem;
-        height: 2rem;
-        font-size: 1rem;
-        margin: 2px;
-    }*/
-
     .floor {
         height: 7rem;
-
     }
 
     .floor p {
@@ -218,47 +239,5 @@ label {
         flex-shrink: 0;
         display: inline-block;
         margin-right: 10px;
-        /* z-index: 5; */
     }
-
-    .floor #groundFloor:nth-child(2) {
-        margin-left: 10px;
-    }
-}
-
-@media screen and (min-width: 480px) and (max-width: 768px) {
-    .floor {
-        height: 9rem;
-    }
-
-    .floor p {
-        font-size: 1.5rem;
-    }
-
-    .floorInfo {
-        height: 9rem;
-        width: 9rem;
-
-.up_btn,
-    .down_btn {
-        width: 2.5rem;
-        height: 2.5rem;
-        font-size: 1.3rem;
-        margin: 3px;
-    }
-
-    .lifts {
-        width: 5rem;
-    }
-
-}
-
-@media screen and (min-width: 768px) and (max-width: 992px) {
-    html {
-        font-size: 55%;
-    }
-}
-#liftDiv {
-    height: 100vh; /* Set the height to 100% of the viewport height */
-    overflow: hidden; /* Add overflow: hidden; to prevent scrollbars if needed */
 }
