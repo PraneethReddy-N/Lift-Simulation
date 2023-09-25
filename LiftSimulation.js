@@ -204,37 +204,37 @@ const createFloor = (totalFloors, totalLifts) => {
 const startButton = document.getElementById('startBtn');
 startButton.addEventListener('click', (e) => {
     e.preventDefault();
-     startBtn.disabled = true;
+
     let floorVal = document.getElementById('floorValue').value;
     let liftVal = document.getElementById('liftValue').value;
 
      if (floorVal === '' || liftVal === '') {
             alert('Please enter the details!');
-            startBtn.disabled = false; // Re-enable the button
+
             return;
     } else if (floorVal < 1 || liftVal < 1) {
         alert('Please enter valid numbers!');
-        startBtn.disabled = false;
+
         return;
     } else if (Number(liftVal) > 10) {
         alert('Number of lifts cannot be greater than 10!');
-        startBtn.disabled = false;
+
         return;
     } else if (Number(liftVal) > Number(floorVal)) {
         alert('Number of lifts cannot be greater than the number of floors!');
-        startBtn.disabled = false;
+
         return;
     } else if (window.innerWidth < 300 && Number(liftVal) > 4) {
         alert('Number of lifts cannot be greater than 4!');
-        startBtn.disabled = false;
+
         return;
     } else if (window.innerWidth < 400 && Number(liftVal) > 5) {
         alert('Number of lifts cannot be greater than 5!');
-        startBtn.disabled = false;
+
         return;
     } else if (window.innerWidth < 500 && Number(liftVal) > 6) {
         alert('Number of lifts cannot be greater than 6!');
-        startBtn.disabled = false;
+
         return;
     }
 
